@@ -6,6 +6,11 @@ pipeline {
           sh "docker build -t docker ."   
         }  
       }
+      stage("Run Docker image "){
+        steps{
+          sh "docker run -itd -p 8082:80 docker"   
+        }  
+      }
    }
 }
 
