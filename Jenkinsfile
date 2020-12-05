@@ -28,8 +28,7 @@ pipeline {
     }
     failure {
        echo "Error caught${err}"
-       failedStage = "${pipelineStage}"
-       echo "Build failed at ${pipelineStage}"
+       echo "Build failed at ${env.pipelineStage}"
     }  
   }
 }
