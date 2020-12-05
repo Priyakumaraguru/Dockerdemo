@@ -14,8 +14,8 @@ pipeline {
       stage("Pushing to docker hub"){
         steps{
           withCredentials([usernamePassword(credentialsId: 'dockerhub_priya', passwordVariable: 'pass', usernameVariable: 'userId')]) {
-            sh "docker commit nginx '${userId}'/docker:latest"
-            sh "docker push '${userId}'/docker:latest"   
+            sh "docker commit nginx ${userId}/docker:latest"
+            sh "docker push ${userId}/docker:latest"   
           }
         }  
       }
