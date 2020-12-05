@@ -13,10 +13,11 @@ pipeline {
       }
       stage("Pushing to docker hub"){
         steps{
-        
+          withCredentials([usernamePassword(credentialsId: 'dockerhub_priya', passwordVariable: 'pass', usernameVariable: 'userId')]) {
+            sh 'docker login -u ${userId}:${pass}'
             sh "docker commit nginx priya4/docker:latest"
             sh "docker push priya4/docker:latest"   
-          
+          }
         }  
       }
    }
