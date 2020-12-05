@@ -1,7 +1,8 @@
 pipeline {
   agent any 
     stages{
-      stage("Docker Build"){
+     
+      stage("Docker Build") {
         steps{
           sh "docker build -t docker ."   
         }  
@@ -18,9 +19,19 @@ pipeline {
             sh "docker commit nginx priya4/docker:latest"
             sh "docker push priya4/docker:latest"   
           }
-        }  
-      }
+        } 
+      }     
    }
+  post {
+    success {
+        echo 'Successfully completed '    
+    }
+    failure {
+       echo "Error caught${err}"
+       failedStage = "${pipelineStage}"
+       echo "Build failed at ${pipelineStage}"
+    }  
+  }
 }
 
 
