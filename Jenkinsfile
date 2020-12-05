@@ -3,8 +3,10 @@ pipeline {
     stages{
       stage("Docker Build"){
         steps{
-          sh "docker build -t webserver ."    
+          sh 'ubuntu@172.31.36.52 \"docker build -t docker .\"'   
         }  
       }
    }
 }
+
+
