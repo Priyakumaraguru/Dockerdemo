@@ -8,15 +8,15 @@ pipeline {
       }
       stage("Run Docker image"){
         steps{
-          sh "docker run --name nginx -itd -p 8082:80 docker"   
+          sh "docker run --name nginx -itd -p 8082:80 docker:latest"   
         }  
       }
       stage("Pushing to docker hub"){
         steps{
-          withCredentials([usernamePassword(credentialsId: 'dockerhub_priya', passwordVariable: 'pass', usernameVariable: 'userId')]) {
+        
             sh "docker commit nginx priya4/docker:latest"
             sh "docker push priya4/docker:latest"   
-          }
+          
         }  
       }
    }
