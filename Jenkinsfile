@@ -27,8 +27,8 @@ pipeline {
         echo 'Successfully completed '    
     }
     failure {
-       echo "Error caught${env.err}"
-       echo "Build failed at ${env.pipelineStage}"
+       //echo "Error caught${env.err}"
+       echo "Build failed at ${env.PIPELINESTAGE}"
     }  
   }
 }
