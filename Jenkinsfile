@@ -1,7 +1,7 @@
 pipeline {
   agent any 
     stages{
-   /*   stage("Docker Build"){
+      stage("Docker Build"){
         steps{
           sh "docker build -t docker ."   
         }  
@@ -10,7 +10,7 @@ pipeline {
         steps{
           sh "docker run --name nginx -itd -p 8082:80 docker:latest"   
         }  
-      }  */
+      }  
       stage("Pushing to docker hub"){
         steps{
           withCredentials([usernamePassword(credentialsId: 'dockerhub_priya', passwordVariable: 'pass', usernameVariable: 'userId')]) {
